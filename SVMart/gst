@@ -1,0 +1,17 @@
+CREATE OR REPLACE FUNCTION get_gst_percentage(prod_id1 INT)
+RETURNS NUMERIC
+AS $$
+DECLARE
+    gst_percentage NUMERIC;
+BEGIN
+    SELECT hsnc_gstc_percentage INTO gst_percentage
+    FROM Products1729 p
+    JOIN HSNCodes1729 h ON p.prod_hsnc_id = h.hsnc_id
+    WHERE p.prod_id = prod_id1;
+
+    RETURN gst_percentage;
+END;
+$$
+LANGUAGE plpgsql;
+
+select * from get_gst_percentage(3)

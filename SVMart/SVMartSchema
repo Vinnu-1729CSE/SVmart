@@ -1,0 +1,140 @@
+CREATE TABLE ProductCategories1729 (
+    prct_id SERIAL PRIMARY KEY,
+    prct_title VARCHAR(100),
+    prct_desc VARCHAR(255)
+);
+Select * from ProductCategories1729;
+INSERT INTO ProductCategories1729 (prct_title, prct_desc) VALUES 
+    ('Electronics', 'Electronic devices and gadgets'),
+    ('Clothing', 'Apparel and fashion accessories'),
+    ('Books', 'Literature and educational materials');
+    
+  
+CREATE TABLE HSNCodes1729 (
+    hsnc_id SERIAL PRIMARY KEY,
+    hsnc_hsncode VARCHAR(20),
+    hsnc_gstc_percentage NUMERIC
+);
+SELECT * FROM HSNCodes1729;
+INSERT INTO HSNCodes1729 (hsnc_hsncode, hsnc_gstc_percentage) VALUES 
+    ('101', 5.0),
+    ('102', 10.0),
+    ('103', 15.0);
+	
+	
+	
+	CREATE TABLE Products1729 (
+    Prod_id SERIAL PRIMARY KEY,
+    prod_title VARCHAR(100),
+    prod_prct_id INT REFERENCES ProductCategories1729(prct_id),
+    prod_hsnc_id INT REFERENCES HSNCodes1729(hsnc_id),
+    prod_brand VARCHAR(100),
+    prod_image VARCHAR(200)
+);
+
+INSERT INTO Products1729 (prod_title, prod_prct_id, prod_hsnc_id, prod_brand, prod_image) VALUES 
+    ('realme narzo 50A', 1, 3, 'realme', 'https://static.digit.in/default/e17b25112bc9e62779a1e42f94e513b8bd9618fe.jpeg'),
+	('vivo i5', 1, 3, 'vivo', 'https://images.gizbot.com/img/2021/02/vivo-1612348890.jpg'),
+	('infinix pro', 1, 3, 'infinix', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHN7cgYLV4DcsnepRUEo8UGkD3EcXk6WcikQ&usqp=CAU'),
+	('iphone 13pro', 1, 3, 'Apple', 'https://images.augustman.com/wp-content/uploads/sites/6/2023/12/08162423/iphone-se-2-996x560.jpg?tr=w-1000'),
+	('samsung s24', 1, 3, 'samsung', 'https://images.augustman.com/wp-content/uploads/sites/6/2023/12/19185701/A55-560x560.jpg?tr=w-1000'),
+	
+    ('shoe1', 2, 1, 'Nike', 'https://images.squarespace-cdn.com/content/v1/5911f31c725e251d002da9ac/1613210424136-AS3MY547OBB5Y3GSQ359/Product+Photography'),
+	('shoe2', 2, 1, 'Nike', 'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2019/11/product_photography_tips_4.jpg?resize=1500%2C1001&ssl=1'),
+	('shoe3', 2, 1, 'Nike', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKJYcQPzdQ8pm3hPOllUIXG7nxoBw9Ojhvg&usqp=CAU'),
+	('shoe4', 2, 1, 'Nike', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRC-LPIftJkqH4ddEuVFVw5ufw2rwD9uOHA&usqp=CAU'),
+	('tshirt1', 2, 1, 'GAP', 'https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&w=600'),
+    ('Phoenix of Destiny', 3, 2, 'vinay', 'https://cdn.downtoearth.org.in/library/large/2020-04-04/0.90443600_1586004689_book-reading.jpg'),
+	 ('All Time Great Story', 3, 2, 'vinay', 'https://5.imimg.com/data5/SELLER/Default/2021/5/MV/RW/IM/3726307/world-famous-literature-all-time-great-classics-16-different-books-500x500.jpg'),
+	  ('Lord of Rings', 3, 2, 'vinay', 'https://orion-uploads.openroadmedia.com/sm_f7e651-tolkien-lordoftherings.jpg'),
+
+	    ('The Top Ten', 3, 2, 'sudheer', 'https://i0.wp.com/www.themarginalian.org/wp-content/uploads/2012/01/topten.jpg?w=680&ssl=1'),
+		 ('Game of Thrones', 3, 2, 'sudheer', 'https://m.media-amazon.com/images/I/71P+4DslKmL._AC_UF350,350_QL50_.jpg');
+
+
+CREATE TABLE ProductStock1729 (
+    prod_id INT REFERENCES Products1729(Prod_id),
+    prod_batchno VARCHAR(20),
+    prod_price NUMERIC,
+    prod_stock INT,
+    prod_mrp NUMERIC
+);
+INSERT INTO ProductStock1729 (prod_id, prod_batchno, prod_price, prod_stock, prod_mrp) VALUES 
+    -- Mobile Phones
+    (1, 'MOBILEBATCH001', 11500, 50, 12000),
+    (2, 'MOBILEBATCH002', 15500, 50, 17000),
+    (3, 'MOBILEBATCH003', 11500, 50,12000),
+    (4, 'MOBILEBATCH004', 16500, 50, 19000),
+    (5, 'MOBILEBATCH005',12500, 50, 15000),
+    -- Nike Sneakers
+    (6, 'SNEAKERBATCH001', 3500, 100, 4000),
+    (7, 'SNEAKERBATCH002', 2500, 100, 3000),
+    (8, 'SNEAKERBATCH003', 6500, 100, 8000),
+    (9, 'SNEAKERBATCH004', 4500, 100,6000),
+    (10, 'SNEAKERBATCH005', 1500, 100,2000),
+    -- Books
+    (11, 'BOOKBATCH001', 14.99, 25, 19.99),
+    (12, 'BOOKBATCH002', 19.99, 25, 24.99),
+    (13, 'BOOKBATCH003', 24.99, 25, 29.99),
+    (14, 'BOOKBATCH004', 29.99, 25, 34.99),
+    (15, 'BOOKBATCH005', 34.99, 25, 39.99);
+
+
+CREATE TABLE OrderValueWiseShippingCharges1729 (
+    orvl_id SERIAL PRIMARY KEY,
+    orvl_from NUMERIC,
+    orvl_to NUMERIC,
+    orvl_shippingamount NUMERIC
+);
+INSERT INTO OrderValueWiseShippingCharges1729 (orvl_from, orvl_to, orvl_shippingamount) VALUES 
+    (0, 1000, 100),
+    (1001, 5000, 200),
+    (5001, 10000, 300),
+    (10001, 50000, 400),
+    (50001, 100000, 500),
+    (100001, 500000, 500);
+    
+	
+	
+	CREATE TABLE ServiceableRegions1729 (
+    srrg_id SERIAL PRIMARY KEY,
+    srrg_name VARCHAR(100),
+    srrg_pinfrom INT,
+    srrg_pinto INT
+);
+INSERT INTO ServiceableRegions1729 (srrg_name, srrg_pinfrom, srrg_pinto) VALUES 
+    ('Visakhapatnam', 530001, 531299),
+    ('Vijayawada', 520001, 520999),
+    ('Tirupati', 517501, 517639);
+	
+	
+	CREATE TABLE ProductCategoryWiseServiceableRegions1729 (
+    prct_id INT,
+    srrg_id INT,
+    PRIMARY KEY (prct_id, srrg_id),
+    FOREIGN KEY (prct_id) REFERENCES ProductCategories1729(prct_id),
+    FOREIGN KEY (srrg_id) REFERENCES ServiceableRegions1729(srrg_id)
+);
+INSERT INTO ProductCategoryWiseServiceableRegions1729 (prct_id, srrg_id) VALUES 
+    (1, 1), -- Product category ID 1 with Serviceable region ID 1
+    (1, 2), -- Product category ID 1 with Serviceable region ID 2
+    (2, 1), -- Product category ID 2 with Serviceable region ID 1
+    (2, 3), -- Product category ID 2 with Serviceable region ID 3
+    (3, 2), -- Product category ID 3 with Serviceable region ID 2
+    (3, 3); -- Product category ID 3 with Serviceable region ID 3
+
+
+
+
+CREATE TABLE users1729 (
+    username VARCHAR(50) PRIMARY KEY,
+    password VARCHAR(50) NOT NULL
+);
+
+INSERT INTO users1729 (username, password) VALUES 
+    ('sudheer', '1234'),
+    ('vinay', '1729');
+select * from users1729
+
+
+

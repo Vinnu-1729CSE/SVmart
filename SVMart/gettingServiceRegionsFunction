@@ -1,0 +1,23 @@
+CREATE OR REPLACE FUNCTION checkServiceableRegion(pincode INT, prcat_id INT) 
+RETURNS INT AS $$
+DECLARE
+    regionCount INT;
+BEGIN
+    -- Count the number of rows where the pincode falls within the serviceable region for the specified product category
+    SELECT COUNT(*)
+    INTO regionCount
+    FROM ServiceableRegions1729 sr
+    JOIN ProductCategoryWiseServiceableRegions1729 pr ON sr.srrg_id = pr.srrg_id
+    WHERE pincode BETWEEN sr.srrg_pinfrom AND sr.srrg_pinto
+    AND pr.prct_id = prcat_id;
+
+    -- If the count is greater than 0, then the pincode is in a serviceable region for the specified product category
+    IF regionCount > 0 THEN
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM checkServiceableRegion(530018, 1);
