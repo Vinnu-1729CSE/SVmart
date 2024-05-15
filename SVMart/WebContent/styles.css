@@ -1,0 +1,236 @@
+/* Reset default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Header styles */
+.main-header {
+    display: flex;
+justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 80px;
+    background-color: #52b788;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 100px; /* Adjust logo width */
+}
+
+.search-bar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+    width: 200px;
+    margin-left: 320px;
+}
+.cart-icon{
+	display: flex;
+	
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #74c69d;
+    color: #e2fdff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+   
+}
+
+.categories-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 1px;
+    padding: 14px;
+    background-color: #74c69d;
+    border-radius: 4px;
+}
+
+.categories-list {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+.categories-list {
+    display: none; /* Hide the original list */
+}
+
+.categories-dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px; /* Adjust dropdown width as needed */
+}
+
+/* Show dropdown when categories-toggle is clicked */
+.categories-toggle {
+    cursor: pointer;
+}
+
+.categories-dropdown {
+    position: relative;
+    margin-left: 40px;
+    
+}
+
+.categories-dropdown::after {
+    content: url('dropdown-arrow.png'); /* Add a dropdown arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+
+.scrolling-offer {
+    margin: auto;
+    width: 100%;
+    
+}
+
+.sort-dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 60px;
+}
+
+
+.main-pic > img{
+margin-top: 30px;
+width: 100%;
+
+}
+
+/* Product list styles */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 96px;
+}
+
+.product-card {
+    width: 300px;
+    height: 550px;
+    padding: 10px;
+    margin: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    max-width: 90%;
+    height: 250px;
+}
+
+.product-card button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color:#74c69d;
+    color: black;
+    margin-top: 20px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+marquee{
+	width: 100%;
+}
+
+/*Login Form Styles */
+
+.login-form {
+	display: block;
+	padding: 95px;
+	margin-left: auto;
+	margin-right: auto;
+	color: black;
+	background-color: white;
+	padding-top: 85px;
+	line-height: 26pt;
+	border:2px solid #4c956c;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	
+}
+
+.login-tn {
+	display: flex;
+	flex-direction: row;
+	width: 850px;
+	height: 500px;
+	margin-top: 64px;
+	margin-left: auto;
+	margin-right: auto;
+	border:2px solid #4c956c;
+	box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;
+	border-radius: 20px;
+		
+	
+}
+.login-pic > img{
+	width: 450px;
+	height: 500px;
+}
+
+.login-form  input{
+	border:none;
+	border-bottom: 1px solid #4c956c;
+	height: 42px;
+}
+
+.login-form button{
+margin-top: 20px; 
+cursor: pointer; 
+color: white; background-color:#4c956c;
+border:1px solid #4c956c;
+border-radius: 10px;
+padding: 6px;
+padding-left: 12px; 
+padding-right: 12px;
+}
+
+input:focus {
+	outline: none;
+}
